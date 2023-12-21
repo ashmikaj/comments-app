@@ -57,7 +57,7 @@ const  handleSortDSC=()=>{
            <div className="comment-list-container" >
             <div style={{display:'flex', flexDirection:'row', gap:'18rem'}}>
             <p className="comment-name">{child.fullName}</p>
-              <p>{JSON.stringify(child.date).slice(1,11)}</p>
+              <p>{JSON.stringify(child.date).slice(3,10)}</p>
             </div>
             
             <p className="comment-remark">{child.comment}</p>

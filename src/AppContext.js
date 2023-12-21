@@ -1,15 +1,18 @@
-import { createContext, useReducer } from 'react';
-import reducer from './Reducer/commentReducer';
+import { createContext, useReducer, useEffect } from 'react';
+import {CommentReducer as reducer, initializer} from './Reducer/commentReducer';
 
 const commentContext = createContext();
 
-const intialState = {
-    comments: []
-}
 
 
 const AppProvider = ({ children } )=>{
-     const [ state, dispatch] = useReducer(reducer, intialState)
+
+     const [ state, dispatch] = useReducer(reducer, [], initializer)
+
+     useEffect(() => {
+        localStorage.setItem("state", JSON.stringify(state));
+      }, [state]);
+
     return <commentContext.Provider value={{state,dispatch}} >{children}</commentContext.Provider>
 }
 

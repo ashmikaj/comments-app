@@ -9,14 +9,14 @@ function App() {
   const { comments } = state
 
   const data = JSON.parse(localStorage.getItem('state'))
+  const abc = data.comments
+
 
   
-  
-
   return (
     <div className="App">
         <CommentCard type='Comment'  />
-        <CommentContainer  comments={data.comments} />
+        <CommentContainer  comments={abc} />
     </div>
 
 

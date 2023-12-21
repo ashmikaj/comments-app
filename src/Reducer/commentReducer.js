@@ -1,4 +1,7 @@
+const initialState = [];
 
+export const initializer = (initialValue = initialState) =>
+  JSON.parse(localStorage.getItem("state")) || initialValue;
 
 const recursiveDeleteNode = (comments,id)=>{
     for (let i = 0; i < comments.length; i++) {
@@ -14,7 +17,8 @@ const recursiveDeleteNode = (comments,id)=>{
 }
 
 
-const CommentReducer  =(state, action) => { 
+export const CommentReducer  =(state, action) => { 
+
 switch(action.type){
 
     case 'POST_COMMENT':
@@ -43,7 +47,7 @@ switch(action.type){
             }
             
         })
-        localStorage.setItem('state', JSON.stringify(state))
+        localStorage.setItem('state', JSON.stringify({...state}))
         return state;
     
     case  'REPLY_COMMENT':
@@ -53,7 +57,7 @@ switch(action.type){
                 subComment.comments.push(comment)
             }
          })
-        localStorage.setItem('state', JSON.stringify(state))
+        localStorage.setItem('state', JSON.stringify({...state}))
         return state
         
      case 'SORT_ASC':
@@ -84,5 +88,3 @@ switch(action.type){
 
 
 }
-
-export default CommentReducer;
