@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CommentCard from './components/CommentCard';
 import CommentContainer from './components/CommentContainer';
 import commentContext from './AppContext';
@@ -8,14 +8,15 @@ function App() {
   const { state } = useContext(commentContext);
   const { comments } = state
 
-  const abc = localStorage.getItem('state')
-  const data = JSON.parse(abc);
+  const data = JSON.parse(localStorage.getItem('state'))
 
+  
+  
 
   return (
     <div className="App">
         <CommentCard type='Comment'  />
-        <CommentContainer  comments={comments} />
+        <CommentContainer  comments={data.comments} />
     </div>
 
 

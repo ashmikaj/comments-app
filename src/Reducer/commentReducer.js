@@ -57,17 +57,23 @@ switch(action.type){
         return state
         
      case 'SORT_ASC':
-        state.comments.sort(function (a, b) {
+        const ascComments = state.comments.sort(function (a, b) {
             return a.date-b.date
         });
-        return state
+       
+        localStorage.setItem('state', JSON.stringify({...state, comments: ascComments}))
 
+        return {...state, comments: ascComments}
+ 
 
      case 'SORT_DSC':
-        state.comments.sort(function (a, b) {
+        const dscComments = state.comments.sort(function (a, b) {
             return b.date-a.date
         });
-        return state
+       
+        localStorage.setItem('state', JSON.stringify({...state, comments: dscComments}))
+
+        return {...state, comments: dscComments}
  
     default:
         localStorage.setItem('state', JSON.stringify(state))

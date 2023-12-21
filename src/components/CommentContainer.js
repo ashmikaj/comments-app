@@ -49,7 +49,7 @@ const  handleSortDSC=()=>{
   
   return (
     <div className={className?className:"comment-container"}>
-       { comments.length>0? <p className="sort-by-date" >Sort By :Data & Time
+       { comments.length>0 && type !=='Reply'?   <p className="sort-by-date" >Sort By :Data & Time
         {sortASC? <IoIosArrowRoundDown className="arrow-sort" onClick={()=>{handleSortDSC()}}/>:<IoIosArrowRoundUp className="arrow-sort" onClick={()=>{handleSortASC()}} /> }</p>: <></>}
        {comments.map((child, index)=>{
         return (
@@ -57,7 +57,7 @@ const  handleSortDSC=()=>{
            <div className="comment-list-container" >
             <div style={{display:'flex', flexDirection:'row', gap:'18rem'}}>
             <p className="comment-name">{child.fullName}</p>
-              <p>{child.date.toJSON().slice(0,10)}</p>
+              <p>{JSON.stringify(child.date).slice(1,11)}</p>
             </div>
             
             <p className="comment-remark">{child.comment}</p>
