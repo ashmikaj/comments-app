@@ -51,13 +51,16 @@ const  handleSortDSC=()=>{
     <div className={className?className:"comment-container"}>
        { comments.length>0 && type !=='Reply'?   <p className="sort-by-date" >Sort By :Data & Time
         {sortASC? <IoIosArrowRoundDown className="arrow-sort" onClick={()=>{handleSortDSC()}}/>:<IoIosArrowRoundUp className="arrow-sort" onClick={()=>{handleSortASC()}} /> }</p>: <></>}
-       {comments.map((child, index)=>{
+       {comments.map((child)=>{
         return (
-          <div key={index}>
+   <>
+    { replyMode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
+    <div key={child.id}>
+          
            <div className="comment-list-container" >
-            <div style={{display:'flex', flexDirection:'row', gap:'18rem'}}>
+            <div style={{display:'flex', flexDirection:'row', flexGrow:'none', gap: '8rem'}}>
             <p className="comment-name">{child.fullName}</p>
-              <p>{JSON.stringify(child.date).slice(3,10)}</p>
+              <p>{JSON.stringify(child.date).slice(1,10)}</p>
             </div>
             
             <p className="comment-remark">{child.comment}</p>
@@ -66,12 +69,14 @@ const  handleSortDSC=()=>{
                {type!=='Reply' &&  <p className="reply-text" onClick={()=>{handleReply(child)}}>Reply</p>}
                 <p className="edit-text" onClick={()=>{handleCloseModal(child.id)}}>Edit</p>
               </div>
-        
+             
             </div>
             { child.comments.length!==0 && <CommentContainer comments={child.comments} className='reply-container' type='Reply'/>}
             {showEditModal&& <Modal  handleCloseModal={handleCloseModal} commentId={parentId} />}
           
           </div>
+   </>
+          
     
           
         )
@@ -80,7 +85,7 @@ const  handleSortDSC=()=>{
 
        
        )}
-          { replyMode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
+          
     </div>
   )
 };
