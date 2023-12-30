@@ -183,3 +183,17 @@ align-items: baseline;
 .arrow-sort{
   height: 1rem;
 }
+
+.comment-date-name{
+  display:flex;
+  flex-direction:row;
+    flex-grow:none; 
+    gap: 24rem
+}
+
+.reply-date-name{
+  display: flex;
+  flex-direction: row;
+    flex-grow:none; 
+    gap: 18rem
+}
