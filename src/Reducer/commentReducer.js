@@ -1,9 +1,4 @@
-const initialState = {
-    'comments':[]
-}
 
-export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem("localCart")) || initialValue;
 
 const recursiveDeleteNode = (comments,id)=>{
     for (let i = 0; i < comments.length; i++) {

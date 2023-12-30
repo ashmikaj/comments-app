@@ -54,7 +54,7 @@ const  handleSortDSC=()=>{
        {comments.map((child)=>{
         return (
    <>
-    { replyMode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
+ 
     <div key={child.id}>
           
            <div className="comment-list-container" >
@@ -75,6 +75,7 @@ const  handleSortDSC=()=>{
             {showEditModal&& <Modal  handleCloseModal={handleCloseModal} commentId={parentId} />}
           
           </div>
+          { replyMode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
    </>
           
     
