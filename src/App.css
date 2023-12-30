@@ -188,7 +188,7 @@ align-items: baseline;
   display:flex;
   flex-direction:row;
     flex-grow:none; 
-    gap: 24rem
+    gap: 22rem
 }
 
 .reply-date-name{
