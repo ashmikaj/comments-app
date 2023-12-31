@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect } from 'react';
-import {CommentReducer as reducer, initializer} from './Reducer/commentReducer';
+import {CommentReducer as reducer } from './Reducer/commentReducer';
 
 const commentContext = createContext();
 

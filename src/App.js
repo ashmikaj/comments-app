@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import CommentCard from './components/CommentCard';
 import CommentContainer from './components/CommentContainer';
 import commentContext from './AppContext';

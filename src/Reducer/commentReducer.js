@@ -42,7 +42,7 @@ switch(action.type){
                     }
                 })
             }
-            return
+       
         })
         localStorage.setItem('state', JSON.stringify(state))
         return state;
@@ -50,13 +50,13 @@ switch(action.type){
     case  'REPLY_COMMENT':
         const { comment, parentId } = action.payload
         state.comments.map(subComment=>{
-            if(subComment.id==parentId){
+            if(subComment.id===parentId){
                 subComment.replymode = !subComment.replymode
                
             }
          })
          state.comments.map(subComment=>{
-            if(subComment.id==parentId){
+            if(subComment.id===parentId){
                 subComment.comments.push(comment)
                
             }
