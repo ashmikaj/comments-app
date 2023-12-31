@@ -32,28 +32,37 @@ switch(action.type){
     case 'EDIT_COMMENT':
         const { commentId, updatedComment } = action.payload
         state.comments.map(comments=>{
-            if(comments.id==commentId){
+            if(comments.id===commentId){
                 comments.comment = updatedComment
             }
             else{
                 comments.comments.map(subComment=>{
-                    if(subComment.id==commentId){
+                    if(subComment.id===commentId){
                         subComment.comment= updatedComment
                     }
                 })
             }
-            
+            return
         })
         localStorage.setItem('state', JSON.stringify(state))
         return state;
     
     case  'REPLY_COMMENT':
         const { comment, parentId } = action.payload
+        state.comments.map(subComment=>{
+            if(subComment.id==parentId){
+                subComment.replymode = !subComment.replymode
+               
+            }
+         })
          state.comments.map(subComment=>{
             if(subComment.id==parentId){
                 subComment.comments.push(comment)
+               
             }
          })
+      
+         
         localStorage.setItem('state', JSON.stringify(state))
         return state
         

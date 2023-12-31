@@ -21,6 +21,7 @@ const CommentContainer = (props) => {
  const handleReply = (parentComment) => {
    setReplyMode(!replyMode)
    setParentId(parentComment.id)
+   parentComment.replymode=replyMode
  }
 
 
@@ -58,7 +59,7 @@ const  handleSortDSC=()=>{
     <div key={child.id}>
           
            <div className="comment-list-container" >
-            <div className={type=='Reply'?'reply-date-name': 'comment-date-name'}>
+            <div className={type==='Reply'?'reply-date-name': 'comment-date-name'}>
             <p className="comment-name">{child.fullName}</p>
               <p>{JSON.stringify(child.date).slice(1,10)}</p>
             </div>
@@ -73,9 +74,10 @@ const  handleSortDSC=()=>{
             </div>
             { child.comments.length!==0 && <CommentContainer comments={child.comments} className='reply-container' type='Reply'/>}
             {showEditModal&& <Modal  handleCloseModal={handleCloseModal} commentId={parentId} />}
+            { child.replymode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
           
           </div>
-          { replyMode && <CommentCard type='Reply' parentId={parentId} handleReply={handleReply} /> }
+         
    </>
           
     
