@@ -10,7 +10,6 @@ import Modal from "./Modal";
 
 const CommentContainer = (props) => {
   const { dispatch } = useContext(commentContext);
-  const [ replyMode, setReplyMode] = useState(false)
   const [ parentId, setParentId ] = useState('')
   const [ showEditModal, setShowEditModal] = useState(false)
   const [ sortASC, setSortASC] = useState(false)
@@ -19,9 +18,8 @@ const CommentContainer = (props) => {
 
 
  const handleReply = (parentComment) => {
-   setReplyMode(!replyMode)
    setParentId(parentComment.id)
-   parentComment.replymode=replyMode
+   parentComment.replymode=true
  }
 
 
