@@ -22,7 +22,7 @@ const CommentCard = (props) => {
       break;
      case 'Reply':
       dispatch({type: 'REPLY_COMMENT', payload: {comment: newComment, parentId: parentId}})
-      handleReply('')
+      handleReply(new String())
       break;
       default:
         return

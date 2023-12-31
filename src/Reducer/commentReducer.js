@@ -51,7 +51,7 @@ switch(action.type){
         const { comment, parentId } = action.payload
         state.comments.map(subComment=>{
             if(subComment.id===parentId){
-                subComment.replymode = !subComment.replymode
+             subComment.replymode = !subComment.replymode
                
             }
          })
