@@ -59,7 +59,7 @@ const  handleSortDSC=()=>{
            <div className="comment-list-container" >
             <div className={type==='Reply'?'reply-date-name': 'comment-date-name'}>
             <p className="comment-name">{child.fullName}</p>
-              <p>{JSON.stringify(child.date).slice(1,10)}</p>
+              <p>{JSON.stringify(child.date).slice(1,11)}</p>
             </div>
             
             <p className="comment-remark">{child.comment}</p>
