@@ -3,13 +3,19 @@ import {CommentReducer as reducer } from './Reducer/commentReducer';
 
 const commentContext = createContext();
 
+const intialData= {
+  comments:[]
+}
+
 const getLocalData = () => {
   let state = localStorage.getItem("state");
-  if (state == []) {
-    return [];
-  } else {
-    return JSON.parse(state);
+  console.log(state)
+  if (state == [] || state == null) {
+    return  intialData
+  
   }
+  return JSON.parse(state);
+
 };
 
 const initialState = getLocalData()
